@@ -1,34 +1,35 @@
-const MonthCard = () => {
+import { twMerge } from "tailwind-merge";
+
+
+const MonthCard = ({ month, body, color }: { month: string; body: string, color: string }) => {
+  const className = twMerge("bg-[#e36042] flex flex-col items-center px-8 py-5 w-96 h-[32rem] overflow-hidden shadow-md", color);
   return (
-    <div className="bg-white bg-opacity-45 rounded-lg shadow-md p-8 md:mx-8 relative z-10">
-    <div className="bg-[#e36042] flex flex-col items-center text-white p-8">
-      <h1 className="text-4xl font-bold mb-4">LEO</h1>
-      <div className="flex mb-6 flex-row  text-black">
-        <div className="mr-4">
-          <p className="text-xl font-semibold">MONTH</p>
-          <p>August</p>
-        </div>
-        <div>
-          <h2 className="text-xl font-semibold">STAR FORM</h2>
-          <div className="flex items-center">
-            <div className="w-8 h-8 border-2 border-black mr-1"></div>
-            <div className="w-8 h-8 border-2 border-black mr-1"></div>
-            <div className="w-8 h-8 border-2 border-black mr-1"></div>
-            <div className="w-8 h-8 border-2 border-black"></div>
-          </div>
-        </div>
+    <div className={className}>
+      <h1 className="text-4xl mt-5 font-bold mb-4 text-left w-full">{month}</h1>
+      <div className=" border-b border-t w-full h-[4px] border-black " />
+
+      <div className=" grid grid-cols-2 gap-52 text-sm text-black">
+        <div className=" border-black font-semibold col-span-1 text-left">MONTH</div>
+        <div className="border-black font-semibold col-span-1 text-right">lol</div>
       </div>
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">MANTRA</h2>
-        <p className="text-lg">
-          The beginning of August will set the tone for your entire year to
-          come, so make sure that you are going after all of the items on your
-          list of hopes and dreams.
+
+      <div className=" border-b border-t w-full h-[4px] border-black" />
+
+      {/* box 2 */}
+      <div className="flex  gap-40 py-4 flex-row text-black">
+        <div className=" text-4xl w-1/2 ">April</div>
+        <div className=" w-1/2 ">PIC goes here</div>
+      </div>
+
+      <div className=" border-b border-t w-full h-[4px] border-black" />
+
+      <div className="mb-6 text-black min-h-[15rem]">
+        <p className="text-lg mt-7 --local-ebgaramond">
+          {body}
         </p>
       </div>
-      <p className="text-sm">WIT AND DELIGHT</p>
-
-    </div></div>
+      <div className=" border-b border-t w-full h-[4px] border-black mt-2" />
+    </div>
   );
 };
 
