@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import MonthCard from "@components/calendar/month/month-card";
 
 const meta = {
-  title: "Calendar",
+  title: "Calendar/month",
   component: MonthCard,
   tags: ["autodocs"],
   parameters: {
