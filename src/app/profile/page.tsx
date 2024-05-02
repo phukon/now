@@ -1,8 +1,8 @@
-import React from 'react'
+import InfoCard from "@/components/profile/info-card"
 
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <InfoCard/>
   )
 }
 

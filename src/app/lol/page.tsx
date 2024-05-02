@@ -12,17 +12,17 @@ function App() {
   const isMobile = useIsMobile();
   // console.log(isMobile)
   return (
-    <div className=" flex flex-col  items-center bg-zinc-700">
+    <div className=" flex flex-col h-screen overflow-hidden items-center bg-zinc-700">
       <StoriesLazy
-        {...(isMobile ? { width: "100vw", height: "93vh" } : { height: "99vh" })} // i'm taking inspiration from instagram here
+        {...(isMobile ? { width: "100vw", height: "100vh" } : { height: "99vh" })} // i'm taking inspiration from instagram here
         preloadCount={3}
         loop
         keyboardNavigation
         defaultInterval={8000}
         stories={stories2}
-        onStoryEnd={(s, st) => console.log("story ended", s, st)}
-        onAllStoriesEnd={(s, st) => console.log("all stories ended", s, st)}
-        onStoryStart={(s, st) => console.log("story started", s, st)}
+        onStoryEnd={(s: any, st: any) => console.log("story ended", s, st)}
+        onAllStoriesEnd={(s: any, st: any) => console.log("all stories ended", s, st)}
+        onStoryStart={(s: any, st: any) => console.log("story started", s, st)}
         onNext={() => console.log("next button pressed")}
         onPrevious={() => console.log("previous button pressed")}
         // storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
@@ -31,7 +31,7 @@ function App() {
   );
 }
 
-const Story2 = ({ action, isPaused }) => {
+const Story2 = ({ action, isPaused }: { action: any; isPaused: boolean }) => {
   return (
     <div style={{ ...contentStyle, background: "Aquamarine", color: "#333" }}>
       <h1>here lol</h1>
@@ -74,7 +74,7 @@ const stories2 = [
     },
   },
   {
-    content: ({ action, story }) => {
+    content: ({ action, story }: { action: any; story: any }) => {
       return (
         <Suspense>
           <WithSeeMore story={story} action={action}>
@@ -88,12 +88,20 @@ const stories2 = [
         </Suspense>
       );
     },
-    seeMoreCollapsed: ({ toggleMore, action }) => (
-      <p style={customSeeMore} onClick={() => toggleMore(true)}>
+    seeMoreCollapsed: ({ toggleMore, action }: { toggleMore: any; action: any }) => (
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: 14,
+          bottom: 20,
+          position: "relative",
+        }}
+        onClick={() => toggleMore(true)}
+      >
         A custom See More message →
       </p>
     ),
-    seeMore: ({ close }) => (
+    seeMore: ({ close }: any) => (
       <div
         style={{
           maxWidth: "100%",
@@ -112,7 +120,7 @@ const stories2 = [
   },
   {
     url: "https://picsum.photos/400/700",
-    seeMore: ({ close }) => (
+    seeMore: ({ close }: { close: () => void }) => (
       <div
         style={{
           maxWidth: "100%",
@@ -132,7 +140,8 @@ const stories2 = [
     content: Story2,
   },
   {
-    url: "https://picsum.photos/400/700", },
+    url: "https://picsum.photos/400/700",
+  },
 ];
 
 const image = {
@@ -154,13 +163,6 @@ const contentStyle = {
   padding: 20,
   color: "white",
   height: "100%",
-};
-
-const customSeeMore = {
-  textAlign: "center",
-  fontSize: 14,
-  bottom: 20,
-  position: "relative",
 };
 
 export default App;
