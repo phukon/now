@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { localEbgaramond } from "@/fonts/fonts";
+import { localEbgaramond, localBasteleur } from "@/fonts/fonts";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${localEbgaramond.variable}`}>{children}</body>
+      <body className={`${inter.className} ${localEbgaramond.variable} ${localBasteleur.variable}`}>{children}</body>
     </html>
   );
 }

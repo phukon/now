@@ -36,3 +36,7 @@ body {
 .--local-ebgaramond {
   font-family: var(--local-ebgaramond);
 }
+
+.--local-basteleur {
+  font-family: var(--local-basteleur);
+}
