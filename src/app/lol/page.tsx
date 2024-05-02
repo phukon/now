@@ -1,7 +1,7 @@
 "use client";
 import React, { Suspense } from "react";
-
-const StoriesLazy = React.lazy(() => import("react-insta-stories"));
+import useIsMobile from "@/utils/isMobile";
+import StoriesLazy from "react-insta-stories";
 const WithSeeMore = React.lazy(() =>
   import("react-insta-stories").then((module) => ({
     default: module.WithSeeMore,
@@ -9,25 +9,24 @@ const WithSeeMore = React.lazy(() =>
 );
 
 function App() {
+  const isMobile = useIsMobile();
+  // console.log(isMobile)
   return (
-    <div className=" flex flex-col  items-center">
-      <Suspense>
-        <StoriesLazy
-          width="100vw"
-          height="93vh"
-          preloadCount={3}
-          loop
-          keyboardNavigation
-          defaultInterval={8000}
-          stories={stories2}
-          onStoryEnd={(s, st) => console.log("story ended", s, st)}
-          onAllStoriesEnd={(s, st) => console.log("all stories ended", s, st)}
-          onStoryStart={(s, st) => console.log("story started", s, st)}
-          onNext={() => console.log("next button pressed")}
-          onPrevious={() => console.log("previous button pressed")}
-          // storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
-        />
-      </Suspense>
+    <div className=" flex flex-col  items-center bg-zinc-700">
+      <StoriesLazy
+        {...(isMobile ? { width: "100vw", height: "93vh" } : { height: "99vh" })} // i'm taking inspiration from instagram here
+        preloadCount={3}
+        loop
+        keyboardNavigation
+        defaultInterval={8000}
+        stories={stories2}
+        onStoryEnd={(s, st) => console.log("story ended", s, st)}
+        onAllStoriesEnd={(s, st) => console.log("all stories ended", s, st)}
+        onStoryStart={(s, st) => console.log("story started", s, st)}
+        onNext={() => console.log("next button pressed")}
+        onPrevious={() => console.log("previous button pressed")}
+        // storyContainerStyles={{ borderRadius: 8, overflow: "hidden" }}
+      />
     </div>
   );
 }
@@ -35,7 +34,7 @@ function App() {
 const Story2 = ({ action, isPaused }) => {
   return (
     <div style={{ ...contentStyle, background: "Aquamarine", color: "#333" }}>
-      <h1>You get the control of the story.</h1>
+      <h1>here lol</h1>
       <p>
         Render your custom JSX by passing just a{" "}
         <code style={{ fontStyle: "italic" }}>content</code> property inside your story object.
@@ -112,15 +111,15 @@ const stories2 = [
     duration: 5000,
   },
   {
-    url: "https://picsum.photos/1080/1920",
+    url: "https://picsum.photos/400/700",
     seeMore: ({ close }) => (
       <div
         style={{
           maxWidth: "100%",
           height: "100%",
           padding: 40,
-          background: "white",
         }}
+        className=" bg-zinc-800/50"
       >
         <h2>Just checking the see more feature.</h2>
         <p style={{ textDecoration: "underline" }} onClick={close}>
@@ -133,8 +132,7 @@ const stories2 = [
     content: Story2,
   },
   {
-    url: "https://plus.unsplash.com/premium_photo-1676231417481-5eae894e7f68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80",
-  },
+    url: "https://picsum.photos/400/700", },
 ];
 
 const image = {
