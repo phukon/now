@@ -88,13 +88,13 @@ const InfoCard = () => {
         </div>
       </div>
       {/* <GridComponent/> */}
-      {/* <div className="grid bg-[#f5ebe9]  grid-cols-2 md:grid-cols-3 md:px-[calc(12%)] lg:px-[calc(16%)]">
+      <div className="grid bg-[#f5ebe9]  grid-cols-2 md:grid-cols-3 md:px-[calc(12%)] lg:px-[calc(16%)]">
         {monthData.map((m, index) => (
           <Link href={`/profile/${m.month}`}>
             <ProfileCard key={index} month={m.month} color={m.color} body={m.body} />
           </Link>
         ))}
-      </div> */}
+      </div>
     </>
   );
 };

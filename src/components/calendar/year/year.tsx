@@ -1,4 +1,4 @@
-import MonthCard from "@components/calendar/month/month-card";
+import MonthCard from "components/calendar/month/month-card";
 
 const monthData = [
   // {
