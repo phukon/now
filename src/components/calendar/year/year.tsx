@@ -56,7 +56,7 @@ const monthData = [
 const Year = () => {
   return (
     <div className="bg-[#f5ebe9] p-2 md:px-[calc(2%)] lg:px-[calc(8%)] lg:py-12">
-      <div className=" flex flex-col md:grid md:grid-cols-3 gap-0">
+      <div className=" flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-0">
         {monthData.map((m, index) => (
           <MonthCard key={index} month={m.month} color={m.color} body={m.body} />
         ))}
